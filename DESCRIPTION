@@ -1,0 +1,26 @@
+Package: mutatomic
+Type: Package
+Title: Tools for Safe Pass-by-Reference Modification Semantics on Atomic Objects
+Version: 0.0.0.9
+Authors@R: person("Tony", "Wilkes",
+           email = "tony_a_wilkes@outlook.com",
+           role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-9498-8379"))
+Description: Provides tools, including a new class ('mutatomic'),
+    for safe pass-by-reference modification semantics on atomic objects.
+    Primary purpose for this package is so the 'mutatomic' class and its related tools
+    are accessible for other packages that wish to implement safe pass-by-reference semantics for atomic objects.
+License: MPL-2.0 | file LICENSE
+Encoding: UTF-8
+LinkingTo: Rcpp
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests:
+    tinytest,
+    roxygen2
+Depends: 
+    R (>= 4.2.0)
+Imports:
+    Rcpp (>= 1.0.11),
+    data.table (>= 1.14.8)
+Language: en-gb

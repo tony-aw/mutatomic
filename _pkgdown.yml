@@ -1,0 +1,35 @@
+template:
+  bootstrap: 5
+  bslib:
+    base_font: {google: "Roboto Serif"}
+    bg: "#FCF5E5"
+    fg: "#000000"
+    font_scale: 1.25
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github, lightswitch]
+home:
+  sidebar:
+    structure: [links, license, community, citation, authors, dev, toc]
+search:
+  exclude: ['vignettes/*']
+reference:
+- title: For End users
+  contents:
+  - '`aaa00_mutatomic_help`'
+  - '`aaa01_mutatomic_PassByReference`'
+  - '`aaa02_mutatomic_coercion`'
+  - '`mutatomic`'
+  - '`currentBindings`'
+- title: Example Functions
+  contents:
+  - '`setapply`'
+  - '`ma_set`'
+- title: Developer Functions
+  contents:
+  - '`stopifnot_ma_safe2mutate`'
+  - '`.internal_set_ma`'
+  - '`.internal_ma_set_DimsAndNames`'
+  
+  

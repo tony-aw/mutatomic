@@ -1,0 +1,20 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/reference/aaa00_mutatomic_help.html</loc></url>
+<url><loc>/reference/aaa01_mutatomic_PassByReference.html</loc></url>
+<url><loc>/reference/aaa02_mutatomic_coercion.html</loc></url>
+<url><loc>/reference/aaa02_mutatomic_PassByReference.html</loc></url>
+<url><loc>/reference/aaa03_mutatomic_coercion.html</loc></url>
+<url><loc>/reference/currentBindings.html</loc></url>
+<url><loc>/reference/developer.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/ma_set.html</loc></url>
+<url><loc>/reference/mutatomic_class.html</loc></url>
+<url><loc>/reference/reexports.html</loc></url>
+<url><loc>/reference/safe2mutate.html</loc></url>
+<url><loc>/reference/setapply.html</loc></url>
+</urlset>
+
