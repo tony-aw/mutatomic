@@ -7,9 +7,15 @@
 \description{
 This help page describes how modification using "pass-by-reference" semantics
 is handled by the 'mutatomic' package. \cr
+\cr
+"Pass-by-reference" refers to modifying a mutable object,
+or a subset of a mutable object,
+without making any copies at all. \cr
+\cr
 This help page does not explain all the basics of pass-by-reference semantics,
 as this is treated as prior knowledge. \cr
 All functions/methods in the 'mutatomic' package
+(and 'data.table', 'squarebrackets', 'broadcast', and more)
 with the word "set" in the name
 use pass-by-reference semantics. \cr \cr
 }
@@ -21,7 +27,8 @@ But it does have several disadvantages. \cr
 \cr
 First, the coercion rules are slightly different: see \link{mutatomic_coercion}. \cr
 \cr
-Second, if 2 or more variables refer to exactly the same object,
+Second, if 2 or more variables refer to exactly the same object
+(i.e. have the same address),
 changing one variable also changes the other ones. \cr
 I.e. the following code,
 

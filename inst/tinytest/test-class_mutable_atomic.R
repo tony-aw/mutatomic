@@ -124,7 +124,7 @@ enumerate <- enumerate + 3
 
 # as.mutatomic vs mutatomic vs materialize_atomic - ALTREP ====
 x <- 1:1e6
-is_altrep <- squarebrackets:::.C_is_altrep
+is_altrep <- mutatomic:::.C_is_altrep
 expect_true(is_altrep(x))
 expect_false(as.mutatomic(x) |> is_altrep())
 expect_false(mutatomic(x) |> is_altrep())
