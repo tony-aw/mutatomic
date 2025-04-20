@@ -105,18 +105,6 @@
 
 #' @keywords internal
 #' @noRd
-.rcpp_all_addresses <- function(env, ls) {
-    .Call(`_mutatomic_rcpp_all_addresses`, env, ls)
-}
-
-#' @keywords internal
-#' @noRd
-.rcpp_address_in_env <- function(ref_address, env, ls) {
-    .Call(`_mutatomic_rcpp_address_in_env`, ref_address, env, ls)
-}
-
-#' @keywords internal
-#' @noRd
 .rcpp_serial <- function(x) {
     .Call(`_mutatomic_rcpp_serial`, x)
 }

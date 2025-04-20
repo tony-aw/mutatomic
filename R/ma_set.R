@@ -36,8 +36,8 @@ ma_set <- function(
   if(!is.numeric(i)) {
     stop("`i` must be numeric")
   }
-  if(.C_any_nonpos(i)) {
-    stop("`i` must consist of stricly positive numbers")
+  if(.C_any_badindx(i, length(x))) {
+    stop("`i` out of bounds")
   }
   n.i <- length(i)
   if(n.i == 0L) {

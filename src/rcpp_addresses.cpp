@@ -35,34 +35,3 @@ CharacterVector rcpp_list_bindings(String ref_address, Environment env, Characte
   return out;
 }
 
-
-//' @keywords internal
-//' @noRd
-// [[Rcpp::export(.rcpp_all_addresses)]]
-CharacterVector rcpp_all_addresses(Environment env, CharacterVector ls) {
-  
-  int n = ls.length();
-  String temp;
-  CharacterVector out(n);
-  for(int i = 0; i < n; ++i) {
-    temp = ls[i];
-    out[i] = rcpp_address(env[temp]);
-  }
-  return out;
-}
-
-//' @keywords internal
-//' @noRd
-// [[Rcpp::export(.rcpp_address_in_env)]]
-bool rcpp_address_in_env(String ref_address, Environment env, CharacterVector ls) {
-  
-  int n = ls.length();
-  String temp;
-  for(int i = 0; i < n; ++i) {
-    temp = ls[i];
-    if(rcpp_address(env[temp]) == ref_address) {
-      return true;
-    }
-  }
-  return false;
-}

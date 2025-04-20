@@ -123,7 +123,7 @@ So when calling <code>x &lt;- mutatomic(base::letters)</code>, <code>x</code> no
 it is (almost) guaranteed it does not refer to an base 'R' object,
 so something like <code><a href="https://rdrr.io/r/base/Constants.html" class="external-link">base::letters</a></code> will never be modified by reference.</p></li>
 <li><p>'mutatomic' stores a list of most base 'R' (atomic) object addresses when it is loaded. <br>
-The <a href="mutatomic_class.html">is.mutatomic</a> function checks this list,
+The <a href="mutatomic_class.html">is.mutatomic</a> and <a href="safe2mutate.html">stopifnot_ma_safe2mutate</a> functions check this list,
 creating extra certainty that base 'R' is never modified by reference.</p></li>
 <li><p>The 'mutatomic' class is not just defined by a class name attribute. <br>
 The class comes with additional attributes to ensure it truly has been created by the functions of this package. <br>

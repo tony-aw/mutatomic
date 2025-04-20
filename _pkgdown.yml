@@ -15,7 +15,7 @@ home:
 search:
   exclude: ['vignettes/*']
 reference:
-- title: For End users
+- title: For Regular 'R' Users
   contents:
   - '`aaa00_mutatomic_help`'
   - '`aaa01_mutatomic_PassByReference`'

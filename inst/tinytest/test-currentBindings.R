@@ -38,6 +38,25 @@ expect_error(
   ma_set(myarr, i = 1, rp = -1),
   pattern = "cannot change value of locked binding for"
 )
+enumerate <- enumerate + 3L
+
+
+# general errors ====
+x <- 1:10
+expect_error(
+  currentBindings(x, action = 1),
+  pattern = "`action` must be a single string"
+)
+expect_error(
+  currentBindings(x, action = letters),
+  pattern = "`action` must be a single string"
+)
+expect_error(
+  currentBindings(x, action = "yahoo"),
+  pattern = "unknown `action` specified"
+)
+enumerate <- enumerate + 3L
+
 
 
 # clean-up ====

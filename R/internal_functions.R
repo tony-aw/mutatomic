@@ -38,13 +38,3 @@
   return(rp)
 }
 
-
-#' @keywords internal
-#' @noRd
-.internal_specialattrib <- function() {
-  out <- c(
-    "comment", "dim", "dimnames", "names", "row.names", "col.names", "tsp",
-    "serial"
-  )
-  return(out)
-}

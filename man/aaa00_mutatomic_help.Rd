@@ -108,7 +108,7 @@ So when calling \code{x <- mutatomic(base::letters)}, \code{x} no longer refers 
 it is (almost) guaranteed it does not refer to an base 'R' object,
 so something like \code{base::letters} will never be modified by reference.
 \item 'mutatomic' stores a list of most base 'R' (atomic) object addresses when it is loaded. \cr
-The \link{is.mutatomic} function checks this list,
+The \link{is.mutatomic} and \link{stopifnot_ma_safe2mutate} functions check this list,
 creating extra certainty that base 'R' is never modified by reference.
 \item The 'mutatomic' class is not just defined by a class name attribute. \cr
 The class comes with additional attributes to ensure it truly has been created by the functions of this package. \cr

@@ -201,31 +201,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_all_addresses
-CharacterVector rcpp_all_addresses(Environment env, CharacterVector ls);
-RcppExport SEXP _mutatomic_rcpp_all_addresses(SEXP envSEXP, SEXP lsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Environment >::type env(envSEXP);
-    Rcpp::traits::input_parameter< CharacterVector >::type ls(lsSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_all_addresses(env, ls));
-    return rcpp_result_gen;
-END_RCPP
-}
-// rcpp_address_in_env
-bool rcpp_address_in_env(String ref_address, Environment env, CharacterVector ls);
-RcppExport SEXP _mutatomic_rcpp_address_in_env(SEXP ref_addressSEXP, SEXP envSEXP, SEXP lsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< String >::type ref_address(ref_addressSEXP);
-    Rcpp::traits::input_parameter< Environment >::type env(envSEXP);
-    Rcpp::traits::input_parameter< CharacterVector >::type ls(lsSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_address_in_env(ref_address, env, ls));
-    return rcpp_result_gen;
-END_RCPP
-}
 // rcpp_serial
 SEXP rcpp_serial(SEXP x);
 RcppExport SEXP _mutatomic_rcpp_serial(SEXP xSEXP) {
@@ -249,12 +224,8 @@ BEGIN_RCPP
 END_RCPP
 }
 
+RcppExport SEXP C_any_address(SEXP, SEXP);
 RcppExport SEXP C_any_badindx(SEXP, SEXP);
-RcppExport SEXP C_any_badmargin(SEXP, SEXP);
-RcppExport SEXP C_any_neg(SEXP);
-RcppExport SEXP C_any_nonNULL(SEXP);
-RcppExport SEXP C_any_nonpos(SEXP);
-RcppExport SEXP C_anyaddress(SEXP, SEXP);
 RcppExport SEXP C_is_altrep(SEXP);
 RcppExport SEXP C_serial(SEXP);
 
@@ -276,18 +247,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_mutatomic_rcpp_setapply_row_Raw", (DL_FUNC) &_mutatomic_rcpp_setapply_row_Raw, 2},
     {"_mutatomic_rcpp_address", (DL_FUNC) &_mutatomic_rcpp_address, 1},
     {"_mutatomic_rcpp_list_bindings", (DL_FUNC) &_mutatomic_rcpp_list_bindings, 3},
-    {"_mutatomic_rcpp_all_addresses", (DL_FUNC) &_mutatomic_rcpp_all_addresses, 2},
-    {"_mutatomic_rcpp_address_in_env", (DL_FUNC) &_mutatomic_rcpp_address_in_env, 3},
     {"_mutatomic_rcpp_serial", (DL_FUNC) &_mutatomic_rcpp_serial, 1},
     {"_mutatomic_rcpp_is_ma", (DL_FUNC) &_mutatomic_rcpp_is_ma, 1},
-    {"C_any_badindx",   (DL_FUNC) &C_any_badindx,   2},
-    {"C_any_badmargin", (DL_FUNC) &C_any_badmargin, 2},
-    {"C_any_neg",       (DL_FUNC) &C_any_neg,       1},
-    {"C_any_nonNULL",   (DL_FUNC) &C_any_nonNULL,   1},
-    {"C_any_nonpos",    (DL_FUNC) &C_any_nonpos,    1},
-    {"C_anyaddress",    (DL_FUNC) &C_anyaddress,    2},
-    {"C_is_altrep",     (DL_FUNC) &C_is_altrep,     1},
-    {"C_serial",        (DL_FUNC) &C_serial,        1},
+    {"C_any_address", (DL_FUNC) &C_any_address, 2},
+    {"C_any_badindx", (DL_FUNC) &C_any_badindx, 2},
+    {"C_is_altrep",   (DL_FUNC) &C_is_altrep,   1},
+    {"C_serial",      (DL_FUNC) &C_serial,      1},
     {NULL, NULL, 0}
 };
 

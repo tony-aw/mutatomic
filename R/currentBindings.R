@@ -132,20 +132,3 @@ currentBindings <- function(x, action = "list", env = NULL) {
   
 }
 
-#' @keywords internal
-#' @noRd
-.address_in_pkgs <- function(ref_address, pkgs) {
-  for(i in pkgs) {
-    ns <- loadNamespace(i)
-    lst <- setdiff(
-      ls(envir = ns, all.names = TRUE, sorted = FALSE),
-      utils::lsf.str(envir = ns, all.names = TRUE)
-    )
-    check <- .rcpp_address_in_env(ref_address, ns, lst)
-    if(check) {
-      return(TRUE)
-    }
-  }
-  return(FALSE)
-  
-}

@@ -23,11 +23,17 @@ mylist <- list(
   a = mutatomic(1:10)
 )
 
-
 expect_error(
   testfun(mylist$a),
   pattern = "only objects that exist as variables can be modified by reference"
 )
+
+`mylist$a` <- mutatomic(1:10)
+
+expect_silent(
+  testfun(`mylist$a`)
+)
+
 
 lockBinding("x", environment())
 

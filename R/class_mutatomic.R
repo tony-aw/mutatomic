@@ -143,7 +143,7 @@ as.mutatomic.default <- function(x, ...) {
 is.mutatomic <- function(x) {
   
   if(!couldb.mutatomic(x)) return(FALSE)
-  check_protected <- .C_anyaddress(
+  check_protected <- .C_any_address(
     .pkgenv_mutatomic[["protected"]],
     .rcpp_address(x)
   )
