@@ -167,16 +167,50 @@ expect_true(
 enumerate <- enumerate + 6L
 
 
-# partial matrix sub-setting ====
-x <- as.mutatomic(matrix(1:20, ncol = 4))
-expect_true(
-  is.mutatomic(x[1, ,drop = FALSE])
+# sub-setting ====
+x <- matrix(1:20, ncol = 4)
+y <- as.mutatomic(x)
+expect_equal(
+  as.mutatomic(x[1:2, ,drop = FALSE]),
+  y[1:2, , drop = FALSE]
+ 
 )
-expect_true(
-  is.mutatomic(x[, 1,drop = FALSE])
+expect_equal(
+  as.mutatomic(x[,1:2 ,drop = FALSE]),
+  y[,1:2 , drop = FALSE]
+  
+)
+expect_equal(
+  as.mutatomic(x[2:3]),
+  y[2:3]
 )
 
-enumerate <- enumerate + 2
+enumerate <- enumerate + 3L
+
+
+
+#  replacement ====
+x <- matrix(1:20, ncol = 4)
+y <- as.mutatomic(x)
+x[1] <- -1
+y[1] <- -1
+expect_equal(
+  as.mutatomic(x),
+  y
+)
+enumerate <- enumerate + 3L
+
+
+
+# Concatenation ====
+x <- mutatomic(1:10)
+y <- mutatomic(11:20)
+expect_equal(
+  c(x, y),
+  mutatomic(1:20)
+)
+enumerate <- enumerate + 1L
+
 
 
 # errors ====
