@@ -99,11 +99,11 @@ this is of no interest for regular 'R' users. <br><br></p>
 <span><span class="fu">collapse</span><span class="fu">::</span><span class="fu"><a href="https://sebkrantz.github.io/collapse/reference/efficient-programming.html" class="external-link">setv</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a"</span>, <span class="st">"xxx"</span><span class="op">)</span></span></code></pre><p></p></div>
 <p>the above code modifies <code><a href="https://rdrr.io/r/base/Constants.html" class="external-link">base::letters</a></code> by reference,
 and nothing is stopping the user from changing base 'R' while 'R' is still running! <br>
-Now, obviously <code><a href="https://sebkrantz.github.io/collapse/reference/efficient-programming.html" class="external-link">collapse::setv()</a></code> was meant for internal programming purposes,
+Now, obviously <code><a href="https://sebkrantz.github.io/collapse/reference/efficient-programming.html" class="external-link">collapse::setv()</a></code> was meant for professional programmers,
 and not to be called by amateurs. <br>
 But what if one wishes to design an 'R' package
 that provides pass-by-reference mechanics for atomic objects
-in a somewhat safe way? <br><br>
+in a safer way? <br><br>
 This is where the 'mutatomic' package comes in. <br>
 'mutatomic' provides a new class which can be considered the atomic version of the 'data.table' class,
 and through this class package authors can protect the user from changing things like <code>base:letters</code>. <br><br></p>

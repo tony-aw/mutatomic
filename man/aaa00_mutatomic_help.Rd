@@ -81,11 +81,11 @@ collapse::setv(x, "a", "xxx")
 
 the above code modifies \code{base::letters} by reference,
 and nothing is stopping the user from changing base 'R' while 'R' is still running! \cr
-Now, obviously \code{collapse::setv()} was meant for internal programming purposes,
+Now, obviously \code{collapse::setv()} was meant for professional programmers,
 and not to be called by amateurs. \cr
 But what if one wishes to design an 'R' package
 that provides pass-by-reference mechanics for atomic objects
-in a somewhat safe way? \cr
+in a safer way? \cr
 \cr
 This is where the 'mutatomic' package comes in. \cr
 'mutatomic' provides a new class which can be considered the atomic version of the 'data.table' class,

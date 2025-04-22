@@ -7,12 +7,6 @@
 \alias{as.mutatomic.default}
 \alias{is.mutatomic}
 \alias{couldb.mutatomic}
-\alias{typecast.mutatomic}
-\alias{c.mutatomic}
-\alias{[.mutatomic}
-\alias{[<-.mutatomic}
-\alias{format.mutatomic}
-\alias{print.mutatomic}
 \title{A Class of Mutable Atomic Objects}
 \usage{
 mutatomic(data, names = NULL, dim = NULL, dimnames = NULL)
@@ -24,18 +18,6 @@ as.mutatomic(x, ...)
 is.mutatomic(x)
 
 couldb.mutatomic(x)
-
-typecast.mutatomic(x, type = typeof(x), dims = dim(x))
-
-\method{c}{mutatomic}(..., use.names = TRUE)
-
-\method{[}{mutatomic}(x, ...)
-
-\method{[}{mutatomic}(x, ...) <- value
-
-\method{format}{mutatomic}(x, ...)
-
-\method{print}{mutatomic}(x, ...)
 }
 \arguments{
 \item{data}{atomic vector giving data to fill the \code{mutatomic} object.}
@@ -45,17 +27,9 @@ typecast.mutatomic(x, type = typeof(x), dims = dim(x))
 \item{x}{an atomic object.}
 
 \item{...}{method dependent arguments.}
-
-\item{type}{a string giving the type; see \link[base]{typeof}.}
-
-\item{dims}{integer vector, giving the new dimensions.}
-
-\item{use.names}{Boolean, indicating if \link[base]{names} should be preserved.}
-
-\item{value}{see \link[base]{Extract}.}
 }
 \value{
-For \code{mutatomic()}, \code{as.mutatomic()}, \code{typecast.mutatomic()}: \cr
+For \code{mutatomic()}, \code{as.mutatomic()}: \cr
 Returns a \code{mutatomic} object. \cr
 \cr
 For \code{is.mutatomic()}: \cr
@@ -85,11 +59,10 @@ Exposed functions (beside the S3 methods):
 \item \code{couldb.mutatomic()}: checks if an object could become \code{mutatomic}. \cr
 An objects can become \code{mutatomic} if it is one of the following types: \cr
 \link{logical}, \link{integer}, \link{double}, \link{character}, \link{complex}, \link{raw}. \cr
-Factors can never be \code{mutatomic}.
-\item \code{typecast.mutatomic()} type-casts and possibly reshapes a (mutable) atomic object,
-and returns a \code{mutatomic} object. \cr
-Does not preserve dimension names if dimensions are changed. \cr
+Factors can never be \code{mutatomic}. \cr \cr
 }
+
+For the 'mutatomic' method extension of generic functions, see \link{mutatomic_methods}. \cr \cr
 }
 \section{Warning}{
 
@@ -107,7 +80,6 @@ x <- mutatomic(
   1:20, dim = c(5, 4), dimnames = list(letters[1:5], letters[1:4])
 )
 x
-typecast.mutatomic(x, "character")
 
 x <- matrix(1:10, ncol = 2)
 x <- as.mutatomic(x)

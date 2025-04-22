@@ -1,4 +1,3 @@
-
 #include <Rcpp.h>
 
 using namespace Rcpp;
@@ -79,5 +78,19 @@ bool rcpp_is_ma(
   
   
   return true;
+  
+}
+
+
+
+//' @keywords internal
+//' @noRd
+// [[Rcpp::export(.rcpp_set_ma)]]
+void rcpp_set_ma(
+  RObject x, CharacterVector newclass
+) {
+  
+   x.attr("class") = newclass;
+   x.attr("serial") = rcpp_serial(x);
   
 }

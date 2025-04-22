@@ -115,3 +115,9 @@
     .Call(`_mutatomic_rcpp_is_ma`, x)
 }
 
+#' @keywords internal
+#' @noRd
+.rcpp_set_ma <- function(x, newclass) {
+    invisible(.Call(`_mutatomic_rcpp_set_ma`, x, newclass))
+}
+

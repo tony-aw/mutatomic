@@ -2,23 +2,12 @@
 % Please edit documentation in R/developer.R
 \name{.internal_set_ma}
 \alias{.internal_set_ma}
-\alias{.internal_ma_set_DimsAndNames}
 \title{Exposed functions for Package developers}
 \usage{
 .internal_set_ma(x)
-
-.internal_ma_set_DimsAndNames(x, names = NULL, dim = NULL, dimnames = NULL)
 }
 \arguments{
 \item{x}{atomic object}
-
-\item{names}{\code{NULL} or a character vector of the same length as \code{x},
-giving the flat names.}
-
-\item{dim}{\code{NULL} or an integer vector giving the dimensions of \code{x}. \cr
-Note that it must hold that \code{prod(dim(x)) == length(x)}.}
-
-\item{dimnames}{\code{NULL} or a list of \verb{dimnames``.}}
 }
 \value{
 Returns: VOID. This function modifies the object by reference. \cr
@@ -34,8 +23,6 @@ They are only to be used inside packages. \cr
 \details{
 \code{.internal_set_ma()}
 sets an object to class 'mutatomic' by reference. \cr
-\code{.internal_ma_set_DimsAndNames()}
-sets the dimensions and (dim)names of a 'mutatomic' object by reference. \cr
 }
 \examples{
 
@@ -43,9 +30,7 @@ sets the dimensions and (dim)names of a 'mutatomic' object by reference. \cr
 testfun1 <- function(x) {
   .internal_set_ma(x)
 }
-testfun2 <- function(x, names = NULL, dim = NULL, dimnames = NULL) {
-  .internal_ma_set_DimsAndNames(x, names = names, dim = dim, dimnames = dimnames)
-}
+
 
 x <- 1:10
 is.mutatomic(x)
@@ -54,12 +39,5 @@ testfun1(x)
 is.mutatomic(x)
 print(x)
 
-testfun2(
-  x,
-  letters[1:10],
-  c(2, 5),
-  list(month.abb[1:2], month.name[1:5])
-)
 
-print(x)
 }

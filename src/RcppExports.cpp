@@ -223,6 +223,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rcpp_set_ma
+void rcpp_set_ma(RObject x, CharacterVector newclass);
+RcppExport SEXP _mutatomic_rcpp_set_ma(SEXP xSEXP, SEXP newclassSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< RObject >::type x(xSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type newclass(newclassSEXP);
+    rcpp_set_ma(x, newclass);
+    return R_NilValue;
+END_RCPP
+}
 
 RcppExport SEXP C_any_address(SEXP, SEXP);
 RcppExport SEXP C_any_badindx(SEXP, SEXP);
@@ -249,6 +260,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_mutatomic_rcpp_list_bindings", (DL_FUNC) &_mutatomic_rcpp_list_bindings, 3},
     {"_mutatomic_rcpp_serial", (DL_FUNC) &_mutatomic_rcpp_serial, 1},
     {"_mutatomic_rcpp_is_ma", (DL_FUNC) &_mutatomic_rcpp_is_ma, 1},
+    {"_mutatomic_rcpp_set_ma", (DL_FUNC) &_mutatomic_rcpp_set_ma, 2},
     {"C_any_address", (DL_FUNC) &C_any_address, 2},
     {"C_any_badindx", (DL_FUNC) &C_any_badindx, 2},
     {"C_is_altrep",   (DL_FUNC) &C_is_altrep,   1},

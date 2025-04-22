@@ -38,3 +38,12 @@
   return(rp)
 }
 
+
+.internal_sane_class <- function(x) {
+  if(is.null(oldClass(x)) && is.null(dim(x))) {
+    return(NULL)
+  }
+  else {
+    return(class(x))
+  }
+}

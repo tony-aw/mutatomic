@@ -21,6 +21,7 @@ reference:
   - '`aaa01_mutatomic_PassByReference`'
   - '`aaa02_mutatomic_coercion`'
   - '`mutatomic`'
+  - '`mutatomic_methods`'
   - '`currentBindings`'
 - title: Example Functions
   contents:
@@ -30,6 +31,5 @@ reference:
   contents:
   - '`stopifnot_ma_safe2mutate`'
   - '`.internal_set_ma`'
-  - '`.internal_ma_set_DimsAndNames`'
   
   

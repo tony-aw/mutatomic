@@ -18,20 +18,15 @@
 #'  * `couldb.mutatomic()`: checks if an object could become `mutatomic`. \cr
 #' An objects can become `mutatomic` if it is one of the following types: \cr
 #' \link{logical}, \link{integer}, \link{double}, \link{character}, \link{complex}, \link{raw}. \cr
-#' Factors can never be `mutatomic`.
-#'  * `typecast.mutatomic()` type-casts and possibly reshapes a (mutable) atomic object,
-#'  and returns a `mutatomic` object. \cr
-#'  Does not preserve dimension names if dimensions are changed. \cr
+#' Factors can never be `mutatomic`. \cr \cr
+#' 
+#' For the 'mutatomic' method extension of generic functions, see \link{mutatomic_methods}. \cr \cr
 #'
 #'
 #'
 #' @param x an atomic object.
 #' @param data atomic vector giving data to fill the `mutatomic` object.
-#' @param value see \link[base]{Extract}.
 #' @param names,dim,dimnames see \link[stats]{setNames} and \link[base]{array}.
-#' @param type a string giving the type; see \link[base]{typeof}.
-#' @param dims integer vector, giving the new dimensions.
-#' @param use.names Boolean, indicating if \link[base]{names} should be preserved.
 #' @param ... method dependent arguments.
 #' 
 #' 
@@ -45,7 +40,7 @@
 #' 
 #' 
 #' @returns
-#' For `mutatomic()`, `as.mutatomic()`, `typecast.mutatomic()`: \cr
+#' For `mutatomic()`, `as.mutatomic()`: \cr
 #' Returns a `mutatomic` object. \cr
 #' \cr
 #' For `is.mutatomic()`: \cr
@@ -116,8 +111,7 @@ as.mutatomic.default <- function(x, ...) {
   
   
   .internal_set_ma(y)
-  .internal_ma_set_DimsAndNames(y, names(x), dim(x), dimnames(x))
-  
+
   return(y)
   
 }
@@ -131,8 +125,7 @@ as.mutatomic.default <- function(x, ...) {
   mostattributes(y) <- attributes(x)
   
   .internal_set_ma(y)
-  .internal_ma_set_DimsAndNames(y, names(x), dim(x), dimnames(x))
-  
+
   return(y)
 }
 
@@ -169,126 +162,3 @@ couldb.mutatomic <- function(x) {
 }
 
 
-#' @rdname mutatomic_class
-#' @export
-typecast.mutatomic <- function(x, type = typeof(x), dims = dim(x)) {
-  
-  if(length(x) != prod(dims)) {
-    stop("dimension product does not match the length of object")
-  }
-  
-  # set type:
-  if(type == "logical") {
-    y <- as.logical(x)
-  }
-  else if(type == "integer") {
-    y <- as.integer(x)
-  }
-  else if(type == "double") {
-    y <- as.double(x)
-  }
-  else if(type == "character") {
-    y <- as.character(x)
-  }
-  else if(type == "complex") {
-    y <- as.complex(x)
-  }
-  else if(type == "raw") {
-    y <- as.raw(x)
-  }
-  else {
-    stop("unsupported type")
-  }
-  
-  # set dimensions:
-  if(!is.null(dims)) {
-    if(length(x) == prod(dims)) {
-      data.table::setattr(y, "dim", dims)
-    }
-  }
-  
-  # convert:
-  .internal_set_ma(y)
-  
-  # set names:
-  if(!is.null(names(x))) {
-    nms <- data.table::copy(names(x)) # protection against pass-by-reference
-    data.table::setattr(y, "names", NULL)
-    data.table::setattr(y, "names", nms)
-  }
-  if(!is.null(dimnames(x)) && all(dim(x) == dim(y))) {
-    nms <- data.table::copy(dimnames(y)) # protection against pass-by-reference
-    data.table::setattr(y, "dimnames", NULL)
-    data.table::setattr(y, "dimnames", nms)
-  }
-  
-  return(y)
-  
-}
-
-
-
-
-#' @rdname mutatomic_class
-#' @export
-c.mutatomic <- function(..., use.names = TRUE) {
-  y <- unlist(list(...), recursive = FALSE, use.names = use.names)
-  .internal_set_ma(y)
-  return(y)
-}
-
-
-
-#' @rdname mutatomic_class
-#' @export
-`[.mutatomic` <- function(x, ...) {
-  y <- NextMethod("[")
-  
-  if(!inherits(y, "mutatomic")) {
-    class(y) <- c("mutatomic", class(y))
-  }
-  
-  attr(y, "serial") <- .C_serial(y)
-  y
-}
-
-
-#' @rdname mutatomic_class
-#' @export
-`[<-.mutatomic` <- function(x, ..., value) {
-  
-  oldtype <- typeof(x)
-  
-  oc <- oldClass(x)
-  class(x) <- NULL
-  x[...] <- value
-  class(x) <- oc
-  
-  newtype <- typeof(x)
-  if(oldtype != newtype) {
-    message(sprintf("coercing type from `%s` to `%s`", oldtype, newtype))
-    attr(x, "serial") <- .C_serial(x)
-  }
-  
-  x
-}
-
-
-#' @rdname mutatomic_class
-#' @export
-format.mutatomic <- function(x, ...) {
-  class(x) <- setdiff(class(x), "mutatomic")
-  attr(x, "serial") <- NULL
-  format(x, ...)
-}
-
-
-#' @rdname mutatomic_class
-#' @export
-print.mutatomic <- function(x, ...) {
-  class(x) <- setdiff(class(x), "mutatomic")
-  attr(x, "serial") <- NULL
-  print(x, ...)
-  cat("mutatomic \n")
-  cat(paste("typeof: ", typeof(x), "\n"))
-}
