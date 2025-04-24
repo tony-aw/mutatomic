@@ -21,7 +21,6 @@ reference:
   - '`aaa01_mutatomic_PassByReference`'
   - '`aaa02_mutatomic_coercion`'
   - '`mutatomic`'
-  - '`mutatomic_methods`'
   - '`currentBindings`'
 - title: Example Functions
   contents:

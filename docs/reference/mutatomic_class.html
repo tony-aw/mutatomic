@@ -16,9 +16,11 @@ couldb.mutatomic(): checks if an object could become mutatomic.
 An objects can become mutatomic if it is one of the following types:
 logical, integer, double, character, complex, raw.
 Factors can never be mutatomic.
+setas.mutatomic(): set large or long vectors/arrays to class mutatomic
+by reference.
+Does not work on ALTREP objects.
 
-
-For the 'mutatomic' method extension of generic functions, see mutatomic_methods.  "><meta property="og:description" content="For the package overview, see mutatomic_help.
+"><meta property="og:description" content="For the package overview, see mutatomic_help.
 
 The mutatomic class is a mutable version of atomic classes.
 It works exactly the same in all aspects as regular atomic classes.
@@ -35,9 +37,11 @@ couldb.mutatomic(): checks if an object could become mutatomic.
 An objects can become mutatomic if it is one of the following types:
 logical, integer, double, character, complex, raw.
 Factors can never be mutatomic.
+setas.mutatomic(): set large or long vectors/arrays to class mutatomic
+by reference.
+Does not work on ALTREP objects.
 
-
-For the 'mutatomic' method extension of generic functions, see mutatomic_methods.  "></head><body>
+"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -82,9 +86,11 @@ including the behaviour of the <code>[&lt;-</code> operator . <br><br>
 Exposed functions (beside the S3 methods):</p><ul><li><p><code>mutatomic()</code>: create a <code>mutatomic</code> object from given data.</p></li>
 <li><p><code>couldb.mutatomic()</code>: checks if an object could become <code>mutatomic</code>. <br>
 An objects can become <code>mutatomic</code> if it is one of the following types: <br><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a>, <a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a>, <a href="https://rdrr.io/r/base/double.html" class="external-link">double</a>, <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>, <a href="https://rdrr.io/r/base/complex.html" class="external-link">complex</a>, <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a>. <br>
-Factors can never be <code>mutatomic</code>. <br><br></p></li>
-</ul><p>For the 'mutatomic' method extension of generic functions, see <a href="mutatomic_methods.html">mutatomic_methods</a>. <br><br></p>
-    </div>
+Factors can never be <code>mutatomic</code>.</p></li>
+<li><p><code>setas.mutatomic()</code>: set large or long vectors/arrays to class <code>mutatomic</code>
+by reference. <br>
+Does not work on ALTREP objects. <br><br></p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
@@ -92,8 +98,7 @@ Factors can never be <code>mutatomic</code>. <br><br></p></li>
 <span></span>
 <span><span class="fu">as.mutatomic</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Default S3 method</span></span>
-<span><span class="fu">as.mutatomic</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">setas.mutatomic</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">is.mutatomic</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
