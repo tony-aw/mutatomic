@@ -17,10 +17,10 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests:
     tinytest,
-    roxygen2
+    roxygen2,
+    data.table
 Depends: 
     R (>= 4.2.0)
 Imports:
-    Rcpp (>= 1.0.11),
-    data.table (>= 1.14.8)
+    Rcpp (>= 1.0.11)
 Language: en-gb

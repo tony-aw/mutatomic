@@ -21,6 +21,13 @@
 #' @example inst/examples/developer.R
 #' 
 
+
+#' @rdname developer
+#' @export
+address <- function(x) {
+  .rcpp_address(x)
+}
+
 #' @rdname developer
 #' @export
 .internal_set_ma <- function(x) {

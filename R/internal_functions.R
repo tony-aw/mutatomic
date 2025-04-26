@@ -38,7 +38,8 @@
   return(rp)
 }
 
-
+#' @keywords internal
+#' @noRd
 .internal_sane_class <- function(x) {
   if(is.null(oldClass(x)) && is.null(dim(x))) {
     return(NULL)

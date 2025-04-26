@@ -18,10 +18,7 @@
 #'  * `couldb.mutatomic()`: checks if an object could become `mutatomic`. \cr
 #' An objects can become `mutatomic` if it is one of the following types: \cr
 #' \link{logical}, \link{integer}, \link{double}, \link{character}, \link{complex}, \link{raw}. \cr
-#' Factors can never be `mutatomic`.
-#'  * `setas.mutatomic()`: set large or long vectors/arrays to class `mutatomic`
-#'  by reference. \cr
-#'  Does not work on ALTREP objects. \cr \cr
+#' Factors can never be `mutatomic`. \cr \cr
 #'
 #'
 #'
@@ -101,7 +98,7 @@ as.mutatomic <- function(x, ...) {
     return(.ma_materialize(y))
   }
   else {
-    y <- data.table::copy(y)
+    y <- .C_copy(y)
   }
   
   
@@ -111,29 +108,6 @@ as.mutatomic <- function(x, ...) {
   
 }
 
-
-#' @rdname mutatomic_class
-#' @export
-setas.mutatomic <- function(x, ...) {
-  if(!couldb.mutatomic(x)) {
-    stop("not atomic or not convertible")
-  }
-  if(length(x) <= (2^16)) {
-    stop("`setas.mutatomic()` only supports large or long vectors/arrays")
-  }
-  if(.C_is_altrep(x)) {
-    stop("setas.mutatomic() does not support ALTREP objects")
-  }
-  if(is.mutatomic(x)) {
-    return(invisible(NULL))
-  }
-  
-  
-  .internal_set_ma(x)
-  
-  return(invisible(NULL))
-  
-}
 
 #' @keywords internal
 #' @noRd

@@ -4,7 +4,6 @@
 \alias{mutatomic_class}
 \alias{mutatomic}
 \alias{as.mutatomic}
-\alias{setas.mutatomic}
 \alias{is.mutatomic}
 \alias{couldb.mutatomic}
 \title{A Class of Mutable Atomic Objects}
@@ -12,8 +11,6 @@
 mutatomic(data, names = NULL, dim = NULL, dimnames = NULL)
 
 as.mutatomic(x, ...)
-
-setas.mutatomic(x, ...)
 
 is.mutatomic(x)
 
@@ -59,10 +56,7 @@ Exposed functions (beside the S3 methods):
 \item \code{couldb.mutatomic()}: checks if an object could become \code{mutatomic}. \cr
 An objects can become \code{mutatomic} if it is one of the following types: \cr
 \link{logical}, \link{integer}, \link{double}, \link{character}, \link{complex}, \link{raw}. \cr
-Factors can never be \code{mutatomic}.
-\item \code{setas.mutatomic()}: set large or long vectors/arrays to class \code{mutatomic}
-by reference. \cr
-Does not work on ALTREP objects. \cr \cr
+Factors can never be \code{mutatomic}. \cr \cr
 }
 }
 \section{Warning}{

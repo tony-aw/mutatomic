@@ -6,13 +6,11 @@ as.logical.mutatomic <- function(x, ...) {
 }
 
 
-
 #' @export
 as.integer.mutatomic <- function(x, ...) {
   out <- as.integer(unclass(x))
   return(.mutatomic_typecast(out, x))
 }
-
 
 
 #' @export
@@ -36,7 +34,6 @@ as.character.mutatomic <- function(x, ...) {
   out <- as.character(unclass(x))
   return(.mutatomic_typecast(out, x))
 }
-
 
 
 #' @export
@@ -68,8 +65,6 @@ c.mutatomic <- function(..., use.names = TRUE) {
 }
 
 
-
-
 #' @export
 `[.mutatomic` <- function(x, ...) {
   
@@ -85,6 +80,7 @@ c.mutatomic <- function(..., use.names = TRUE) {
   attr(y, "serial") <- .C_serial(y)
   y
 }
+
 
 #' @export
 `[[.mutatomic` <- function(x, ...) {
@@ -126,6 +122,7 @@ c.mutatomic <- function(..., use.names = TRUE) {
   x
 }
 
+
 #' @export
 `[[<-.mutatomic` <- function(x, ..., value) {
   
@@ -161,7 +158,6 @@ format.mutatomic <- function(x, ...) {
   attr(x, "serial") <- NULL
   format(x, ...)
 }
-
 
 
 #' @export

@@ -8,34 +8,38 @@ print(x)
 #############################################################################
 
 # Coercion examples - data.table - whole columns ====
+if(require(data.table)) {
+  obj <- data.table::data.table(
+    a = 1:10, b = letters[1:10], c = 11:20, d = factor(letters[1:10])
+  )
+  str(obj) # notice that columns "a" and "c" are INTEGER (`int`)
+  
+  data.table::set(
+    obj, j = c("a", "c"),
+    value = -1 # SAFE: row=NULL & obs = NULL, so coercion performed
+  )
+  str(obj)
+}
 
-obj <- data.table::data.table(
-  a = 1:10, b = letters[1:10], c = 11:20, d = factor(letters[1:10])
-)
-str(obj) # notice that columns "a" and "c" are INTEGER (`int`)
-
-data.table::set(
-  obj, j = c("a", "c"),
-  value = -1 # SAFE: row=NULL & obs = NULL, so coercion performed
-)
-str(obj)
 
 #############################################################################
 
-
-# Coercion examples - data.table - partial columns ====
-
-obj <- data.table::data.table(
-  a = 1:10, b = letters[1:10], c = 11:20, d = factor(letters[1:10])
-)
-str(obj) # notice that columns "a" and "c" are INTEGER (`int`)
-data.table::set(
-  obj, i = which(with(obj, (a >= 2) & (c <= 17))), j = c("a", "c"),
-  value = -1
-  # WARNING: sqrt() results in `dbl`, but columns are `int`, so decimals lost
-)
-print(obj)
-
+if(require(data.table)) {
+  # Coercion examples - data.table - partial columns ====
+  
+  obj <- data.table::data.table(
+    a = 1:10, b = letters[1:10], c = 11:20, d = factor(letters[1:10])
+  )
+  str(obj) # notice that columns "a" and "c" are INTEGER (`int`)
+  data.table::set(
+    obj, i = which(with(obj, (a >= 2) & (c <= 17))), j = c("a", "c"),
+    value = -1
+    # WARNING: sqrt() results in `dbl`, but columns are `int`, so decimals lost
+  )
+  print(obj)
+  
+  
+}
 
 
 #############################################################################

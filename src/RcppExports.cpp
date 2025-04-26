@@ -237,6 +237,7 @@ END_RCPP
 
 RcppExport SEXP C_any_address(SEXP, SEXP);
 RcppExport SEXP C_any_badindx(SEXP, SEXP);
+RcppExport SEXP C_copy(SEXP);
 RcppExport SEXP C_is_altrep(SEXP);
 RcppExport SEXP C_serial(SEXP);
 
@@ -263,6 +264,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_mutatomic_rcpp_set_ma", (DL_FUNC) &_mutatomic_rcpp_set_ma, 2},
     {"C_any_address", (DL_FUNC) &C_any_address, 2},
     {"C_any_badindx", (DL_FUNC) &C_any_badindx, 2},
+    {"C_copy",        (DL_FUNC) &C_copy,        1},
     {"C_is_altrep",   (DL_FUNC) &C_is_altrep,   1},
     {"C_serial",      (DL_FUNC) &C_serial,      1},
     {NULL, NULL, 0}

@@ -25,3 +25,8 @@
   .Call("C_any_address", x = x, v = v)
 }
 
+#' @keywords Internal
+#' @noRd
+.C_copy <- function(x) {
+  .Call("C_copy", x = x)
+}
